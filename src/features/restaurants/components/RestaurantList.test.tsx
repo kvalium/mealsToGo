@@ -1,10 +1,10 @@
 import { render } from "@testing-library/react-native";
 import React from "react";
-import { List } from "./List";
+import { RestaurantList } from "./RestaurantList";
 
 describe("<List />", () => {
   it("Returns expect content", () => {
-    const { getByText } = render(<List />);
+    const { getByText } = render(<RestaurantList />);
     expect(getByText("list")).toBeTruthy();
   });
 });

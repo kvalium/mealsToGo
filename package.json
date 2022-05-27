@@ -12,6 +12,9 @@
     "format": "npx prettier --write ./src",
     "test": "jest --watch --coverage=false --changedSince=origin/master"
   },
+  "resolutions": {
+    "@types/react": "17.0.2"
+  },
   "jest": {
     "preset": "jest-expo",
     "transformIgnorePatterns": [
@@ -33,7 +36,9 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.68.2",
-    "react-native-web": "0.17.7"
+    "react-native-paper": "^4.12.1",
+    "react-native-web": "0.17.7",
+    "react-query": "^3.39.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

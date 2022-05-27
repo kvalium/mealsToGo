@@ -1,37 +1,20 @@
-import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import {
-  Platform,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-} from "react-native";
-import { List } from "./src/components/List";
-import { Search } from "./src/components/Search";
+import React from "react";
+import { Provider as PaperProvider } from "react-native-paper";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { RestaurantsScreen } from "./src/features/restaurants/screens/RestaurantsScreen";
 
-const getPaddingTop = () =>
-  Platform.OS === "android" && StatusBar.currentHeight
-    ? StatusBar.currentHeight
-    : 0;
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <>
-      <SafeAreaView style={styles.container}>
-        <Search />
-        <List />
-      </SafeAreaView>
-      <ExpoStatusBar />
-    </>
+    <QueryClientProvider client={queryClient}>
+      <PaperProvider>
+        <RestaurantsScreen />
+        <ExpoStatusBar />
+      </PaperProvider>
+    </QueryClientProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: getPaddingTop(),
-  },
-});
 
 export default App;
