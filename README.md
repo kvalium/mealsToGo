@@ -1,2 +1,0 @@
-# mealsToGo
-## Udemy course project
