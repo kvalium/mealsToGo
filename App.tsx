@@ -7,6 +7,9 @@ import { useFonts } from "expo-font";
 import { Oswald_400Regular } from "@expo-google-fonts/oswald";
 import { Lato_400Regular } from "@expo-google-fonts/lato";
 import { Text } from "react-native-paper";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { SettingsScreen } from "./src/features/settings/screens/Settings.screen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -18,10 +21,17 @@ export default function App() {
     return <Text>Loading...</Text>;
   }
 
+  const Tab = createBottomTabNavigator();
+
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantsScreen />
+        <NavigationContainer>
+          <Tab.Navigator>
+            <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
