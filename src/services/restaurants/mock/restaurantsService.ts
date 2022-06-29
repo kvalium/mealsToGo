@@ -26,7 +26,7 @@ export const useRestaurant = () => {
   };
 
   useEffect(() => {
-    location && retrieveRestaurants(location);
+    location && retrieveRestaurants(`${location.lat},${location.lng}`);
   }, [location]);
 
   return { isLoading, error, restaurants, retrieveRestaurants };
@@ -54,5 +54,6 @@ const restaurantsTransform = (
     isClosedTemporarily: r.business_status === "CLOSED_TEMPORARILY",
     isOpenNow: !!r.opening_hours?.open_now,
     rating: r.rating,
+    coordinates: r.geometry.location,
   }));
 };

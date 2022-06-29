@@ -20,5 +20,6 @@ module.exports = {
   plugins: ["react", "@typescript-eslint"],
   rules: {
     quotes: [2, "double", { avoidEscape: true }],
+    "react/no-unstable-nested-components": false,
   },
 };

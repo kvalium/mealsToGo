@@ -1,6 +1,12 @@
 import styled, { DefaultTheme } from "styled-components/native";
 
-type TextVariantElement = "body" | "label" | "caption" | "error" | "hint";
+type TextVariantElement =
+  | "body"
+  | "label"
+  | "caption"
+  | "error"
+  | "hint"
+  | "header";
 
 type TextVariant = (theme: DefaultTheme) => string;
 
@@ -46,10 +52,16 @@ const hint: TextVariant = (theme) => `
   font-size: ${theme.fontSizes.body};
 `;
 
+const header: TextVariant = (theme) => `
+  font-size: ${theme.fontSizes.title};
+  font-family: ${theme.fonts.heading};
+`;
+
 const variants: Record<TextVariantElement, TextVariant> = {
   body,
   label,
   caption,
   error,
   hint,
+  header,
 };

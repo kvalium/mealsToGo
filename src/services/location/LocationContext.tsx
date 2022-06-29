@@ -1,8 +1,11 @@
 import React, { createContext, Dispatch, PropsWithChildren } from "react";
+import { LocationApiResult, Viewport } from "./LocationApiResult";
 import { useLocation } from "./locationService";
 
+export type Coords = { lat: number; lng: number; viewport?: Viewport };
+
 export interface LocationContextInterface {
-  location: string | null;
+  location: Coords | null;
   keyword: string | null;
   search: Dispatch<string>;
   isLoading: boolean;

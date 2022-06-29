@@ -1,3 +1,14 @@
+export type Viewport = {
+  northeast: {
+    lat: number;
+    lng: number;
+  };
+  southwest: {
+    lat: number;
+    lng: number;
+  };
+};
+
 export type LocationApiResult = {
   results: {
     geometry: {
@@ -5,16 +16,7 @@ export type LocationApiResult = {
         lng: number;
         lat: number;
       };
-      viewport: {
-        northeast: {
-          lat: number;
-          lng: number;
-        };
-        southwest: {
-          lat: number;
-          lng: number;
-        };
-      };
+      viewport: Viewport;
     };
   }[];
   status?: "OK";

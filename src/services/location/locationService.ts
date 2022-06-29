@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { locations } from "./location.mock";
 import { LocationApiResult } from "./LocationApiResult";
-import { LocationContextInterface } from "./LocationContext";
+import { Coords, LocationContextInterface } from "./LocationContext";
 
 export const useLocation = (): LocationContextInterface => {
   const [isLoading, setLoading] = useState(true);
   const [keyword, setKeyword] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [location, setLocation] = useState<string | null>(null);
+  const [location, setLocation] = useState<Coords | null>(null);
 
   const search = (searchKeyword?: string) => {
     setLoading(true);
@@ -28,7 +28,7 @@ export const useLocation = (): LocationContextInterface => {
   return { isLoading, error, location, search, keyword };
 };
 
-export const locationRequest = (location?: string): Promise<string> => {
+export const locationRequest = (location?: string): Promise<Coords> => {
   return new Promise((resolve, reject) =>
     location && locations[location.toLowerCase()]
       ? resolve(locationTransform(locations[location.toLowerCase()]))
@@ -36,10 +36,14 @@ export const locationRequest = (location?: string): Promise<string> => {
   );
 };
 
-const locationTransform = (locationResult: LocationApiResult): string => {
+const locationTransform = (locationResult: LocationApiResult): Coords => {
   const [firstResult] = locationResult.results;
   if (!firstResult) {
     throw new Error("unable to retrieve location");
   }
-  return `${firstResult.geometry.location.lat},${firstResult.geometry.location.lng}`;
+  const {
+    location: { lat, lng },
+    viewport,
+  } = firstResult.geometry;
+  return { lat, lng, viewport };
 };

@@ -18,6 +18,7 @@ export const RestaurantSearch = () => {
   return (
     <RestaurantSearchContainer>
       <Searchbar
+        icon="map"
         placeholder="Search for a location"
         value={searchKeyword}
         onChangeText={setSearchKeyword}

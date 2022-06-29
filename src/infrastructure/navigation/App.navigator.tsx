@@ -7,6 +7,7 @@ import {
   RouteProp,
 } from "@react-navigation/native";
 import React from "react";
+import { MapScreen } from "../../features/map/screens/Map.screen";
 import { SettingsScreen } from "../../features/settings/screens/Settings.screen";
 import { RestaurantNavigator } from "./Restaurant.navigator";
 
@@ -36,7 +37,7 @@ export const AppNavigator = () => {
     <NavigationContainer>
       <Tab.Navigator screenOptions={screenOptions}>
         <Tab.Screen name="Restaurants" component={RestaurantNavigator} />
-        <Tab.Screen name="Map" component={SettingsScreen} />
+        <Tab.Screen name="Map" component={MapScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
