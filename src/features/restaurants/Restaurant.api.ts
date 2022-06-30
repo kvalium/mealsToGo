@@ -1,4 +1,4 @@
-import { Coords } from "../../services/location/LocationContext";
+import { Coords } from "../../services/location/location.context";
 
 export type Restaurant = {
   id: string;

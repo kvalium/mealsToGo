@@ -2,14 +2,16 @@ import React, { useContext, useMemo } from "react";
 import { SafeArea } from "../../../components/utility/SafeArea.component";
 import MapView, { Marker, Callout } from "react-native-maps";
 import { RestaurantSearch } from "../components/Search.component";
-import { LocationContext } from "../../../services/location/LocationContext";
-import { RestaurantsContext } from "../../../services/restaurants/mock/restaurantsContext";
+import { LocationContext } from "../../../services/location/location.context";
+import { RestaurantsContext } from "../../../services/restaurants/mock/restaurants.context";
 import { MapCallout } from "../components/MapCallout.component";
+import { useNavigation } from "@react-navigation/native";
 
 export const MapScreen = () => {
   const COORDS_DELTA = 0.02;
   const { location } = useContext(LocationContext);
   const { restaurants } = useContext(RestaurantsContext);
+  const { navigate } = useNavigation();
 
   const region = useMemo(
     () =>
@@ -32,17 +34,21 @@ export const MapScreen = () => {
     <SafeArea>
       <RestaurantSearch />
       <MapView style={{ flex: 1 }} region={region}>
-        {(restaurants || []).map((r) => (
+        {(restaurants || []).map((restaurant) => (
           <Marker
-            key={r.id}
+            key={restaurant.id}
             coordinate={{
-              latitude: r.coordinates.lat,
-              longitude: r.coordinates.lng,
+              latitude: restaurant.coordinates.lat,
+              longitude: restaurant.coordinates.lng,
             }}
-            title={r.name}
+            title={restaurant.name}
           >
-            <Callout>
-              <MapCallout restaurant={r} />
+            <Callout
+              onPress={() =>
+                navigate("RestaurantDetails" as never, { restaurant } as never)
+              }
+            >
+              <MapCallout restaurant={restaurant} />
             </Callout>
           </Marker>
         ))}

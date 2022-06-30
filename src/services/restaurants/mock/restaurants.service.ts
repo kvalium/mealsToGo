@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { mockImages, mocks } from ".";
 import { Restaurant } from "../../../features/restaurants/Restaurant.api";
-import { LocationContext } from "../../location/LocationContext";
+import { LocationContext } from "../../location/location.context";
 import { RestaurantApiResult } from "./RestaurantApiResult";
 
 export const useRestaurant = () => {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { locations } from "./location.mock";
 import { LocationApiResult } from "./LocationApiResult";
-import { Coords, LocationContextInterface } from "./LocationContext";
+import { Coords, LocationContextInterface } from "./location.context";
 
 export const useLocation = (): LocationContextInterface => {
   const [isLoading, setLoading] = useState(true);

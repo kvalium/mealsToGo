@@ -6,7 +6,7 @@ import styled from "styled-components/native";
 import { Spacer } from "../../../components/spacer/Spacer";
 import { SafeArea } from "../../../components/utility/SafeArea.component";
 import { ScreenLoader } from "../../../components/utility/ScreenLoader.component";
-import { RestaurantsContext } from "../../../services/restaurants/mock/restaurantsContext";
+import { RestaurantsContext } from "../../../services/restaurants/mock/restaurants.context";
 import { RestaurantInfoCard } from "../components/RestaurantInfoCard.component";
 import { RestaurantSearch } from "../components/Search.component";
 import { Restaurant } from "../Restaurant.api";

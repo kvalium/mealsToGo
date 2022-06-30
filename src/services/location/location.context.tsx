@@ -1,6 +1,6 @@
 import React, { createContext, Dispatch, PropsWithChildren } from "react";
 import { LocationApiResult, Viewport } from "./LocationApiResult";
-import { useLocation } from "./locationService";
+import { useLocation } from "./location.service";
 
 export type Coords = { lat: number; lng: number; viewport?: Viewport };
 

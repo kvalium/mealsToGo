@@ -1,6 +1,6 @@
 import React, { createContext, Dispatch, PropsWithChildren } from "react";
 import { Restaurant } from "../../../features/restaurants/Restaurant.api";
-import { useRestaurant } from "./restaurantsService";
+import { useRestaurant } from "./restaurants.service";
 
 interface RestaurantContextInterface {
   restaurants: Restaurant[] | null;

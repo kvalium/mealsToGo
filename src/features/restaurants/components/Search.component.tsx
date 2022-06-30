@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
-import { LocationContext } from "../../../services/location/LocationContext";
+import { LocationContext } from "../../../services/location/location.context";
 
 const RestaurantSearchContainer = styled.View`
   padding: ${(props) => props.theme.space.lg};
